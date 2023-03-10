@@ -38,6 +38,13 @@ model.fit(x_train, y_train, epochs=100, batch_size=10, validation_split=0.2)
 result = model.evaluate(x_test, y_test)
 print('result : ', result)
 
-y_predict = np.round(model.predict(x_test))
-acc = accuracy_score(y_test, y_predict)
+y_predict = model.predict(x_test)
+print(y_predict.shape)
+y_predict = np.argmax(y_predict, axis=-1)
+print(y_predict.shape)
+
+y_true = np.argmax(y_test, axis=-1)
+
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(y_true, y_predict)
 print('acc : ', acc)
