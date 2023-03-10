@@ -17,6 +17,9 @@ encoder = OneHotEncoder()
 y_2d = y.reshape(-1, 1)
 print(y_2d.shape)
 y = encoder.fit_transform(y_2d).toarray()
+# y_2d = y.reshape(-1, 1)
+# y = OneHotEncoder().fit_transform(y_2d).toarray()
+
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, random_state=123)
 
